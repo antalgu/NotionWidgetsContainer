@@ -40,7 +40,8 @@ window.onload = function () {
                 // Update UI with data
                 counter = data.count;
                 title = data.name;
-                color = data.color;
+                colorb = data.color;
+                color = '#' + colorb;
                 slots = data.slots;
                 document.getElementById('counter').innerText = counter;
                 document.getElementById('titleInput').value = title;
@@ -118,7 +119,7 @@ function updateCount(action) {
         .then(response => response.json())
         .then(data => {
             counter = data.count;
-            document.getElementById('counter').innerText = counter;
+            document.getElementById('counter').value = counter;
             updateProgressBar();
         })
         .catch(error => console.error('Error:', error));
@@ -140,8 +141,9 @@ function reset() {
 }
 
 function changeColor() {
-    color = document.getElementById('colorPicker').value;
-    fetch(`${BASE_URL}/itemsc/${itemId}/${color}`, { method: 'PUT' })
+    colorb = document.getElementById('colorPicker').value;
+    color = '#' + color; 
+    fetch(`${BASE_URL}/itemsc/${itemId}/${colorb}`, { method: 'PUT' })
         .then(response => {
             if (response.ok) {
                 document.querySelector('.widget-container').style.backgroundColor = color;
