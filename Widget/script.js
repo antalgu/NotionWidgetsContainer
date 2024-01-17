@@ -40,8 +40,10 @@ window.onload = function () {
                 // Update UI with data
                 counter = data.count;
                 title = data.name;
+                color = data.color;
                 document.getElementById('counter').innerText = counter;
                 document.getElementById('titleInput').value = title;
+                document.getElementById('colorPicker').value = color;
                 document.title = title;
             })
             .catch(error => console.error('Error:', error));
@@ -52,7 +54,8 @@ function createItem() {
     // Define standard data for new item
     const newItem = {
         name: 'Counter',
-        count: 0
+        count: 0,
+        color: '#00ff00'
     };
 
     return fetch(`${BASE_URL}/items/`, {
@@ -102,7 +105,7 @@ function decrement() {
 }
 
 function updateCount(action) {
-    fetch(`${BASE_URL}/items/${itemId}/${action}`, { method: 'PUT' })
+    fetch(`${BASE_URL}/itemsa/${itemId}/${action}`, { method: 'PUT' })
         .then(response => response.json())
         .then(data => {
             counter = data.count;
@@ -114,7 +117,7 @@ function updateCount(action) {
 
 function changeTitle() {
     title = document.getElementById('titleInput').value;
-    fetch(`${BASE_URL}/items/${itemId}/${title}`, { method: 'PUT' })
+    fetch(`${BASE_URL}/itemsn/${itemId}/${title}`, { method: 'PUT' })
         .then(response => {
             if (response.ok) {
                 document.title = title;
@@ -131,14 +134,19 @@ function reset() {
 }
 
 function changeColor() {
-  color = document.getElementById('colorPicker').value;
-  document.querySelector('.widget-container').style.backgroundColor = color;
-  document.getElementById('colorPicker').style.backgroundColor = color;
-  document.getElementById('titleInput').style.backgroundColor = color;
-	document.querySelectorAll('.slot').forEach(slot => {
-	  slot.style.borderRight = `1px solid ${color}`;
-	});
-  localStorage.setItem('color1', color);
+    color = document.getElementById('colorPicker').value;
+    fetch(`${BASE_URL}/itemsc/${itemId}/${color}`, { method: 'PUT' })
+        .then(response => {
+            if (response.ok) {
+                document.querySelector('.widget-container').style.backgroundColor = color;
+                document.getElementById('colorPicker').style.backgroundColor = color;
+                document.getElementById('titleInput').style.backgroundColor = color;
+                document.querySelectorAll('.slot').forEach(slot => {
+                    slot.style.borderRight = `1px solid ${color}`;
+                });
+            }
+        })
+        .catch(error => console.error('Error:', error));
 }
 
 
