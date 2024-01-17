@@ -1,4 +1,4 @@
-const BASE_URL = "http://ComptadorContainer:9090";
+const BASE_URL = "http://host.docker.internal:9090";
 
 // Initialize counter
 let counter = localStorage.getItem('counter1') || 0;
