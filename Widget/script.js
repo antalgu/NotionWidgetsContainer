@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.2.34:9090";
+const BASE_URL = "http://ComptadorContainer:9090";
 
 // Initialize counter
 let counter = localStorage.getItem('counter1') || 0;
