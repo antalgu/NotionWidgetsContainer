@@ -41,9 +41,11 @@ window.onload = function () {
                 counter = data.count;
                 title = data.name;
                 color = data.color;
+                slots = data.slots;
                 document.getElementById('counter').innerText = counter;
                 document.getElementById('titleInput').value = title;
                 document.getElementById('colorPicker').value = color;
+                document.getElementById('slotInput').value = slots;
                 document.title = title;
             })
             .catch(error => console.error('Error:', error));
@@ -55,7 +57,8 @@ function createItem() {
     const newItem = {
         name: 'Counter',
         count: 0,
-        color: '#00ff00'
+        color: '#00ff00',
+        slots: 21
     };
 
     return fetch(`${BASE_URL}/items/`, {
@@ -93,7 +96,13 @@ function changeSlots() {
   }
 
   updateProgressBar();
-  localStorage.setItem('numSlots1', numSlots); // Save the number of slots
+  fetch(`${BASE_URL}/itemss/${itemId}/${numSlots}`, { method: 'PUT' })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById('slotInput').value = numSlots;
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 function increment() {
@@ -127,10 +136,7 @@ function changeTitle() {
 }
 
 function reset() {
-  counter = 0;
-  document.getElementById('counter').innerText = counter;
-  localStorage.setItem('counter1', counter);
-  updateProgressBar();
+    updateCount('res')
 }
 
 function changeColor() {
