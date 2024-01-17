@@ -141,8 +141,8 @@ function reset() {
 }
 
 function changeColor() {
-    colorb = document.getElementById('colorPicker').value;
-    color = '#' + color; 
+    color = document.getElementById('colorPicker').value;
+    colorb = color.substring(1);
     fetch(`${BASE_URL}/itemsc/${itemId}/${colorb}`, { method: 'PUT' })
         .then(response => {
             if (response.ok) {
