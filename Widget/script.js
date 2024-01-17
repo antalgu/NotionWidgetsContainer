@@ -48,7 +48,6 @@ window.onload = function () {
     }
 };
 
-
 function createItem() {
     // Define standard data for new item
     const newItem = {
