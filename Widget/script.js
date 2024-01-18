@@ -118,8 +118,8 @@ function updateCount(action) {
     fetch(`${BASE_URL}/itemsa/${itemId}/${action}`, { method: 'PUT' })
         .then(response => response.json())
         .then(data => {
-            counter = data.count;
-            document.getElementById('counter').value = counter;
+            counter = data.new_count;
+            document.getElementById('counter').innerText = counter;
             updateProgressBar();
         })
         .catch(error => console.error('Error:', error));
