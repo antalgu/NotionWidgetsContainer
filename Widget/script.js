@@ -46,6 +46,12 @@ window.onload = function () {
                 document.getElementById('counter').innerText = counter;
                 document.getElementById('titleInput').value = title;
                 document.getElementById('colorPicker').value = color;
+                document.getElementById('colorPicker').style.backgroundColor = color;
+                document.getElementById('titleInput').style.backgroundColor = color;
+                document.querySelector('.widget-container').style.backgroundColor = color;
+                document.querySelectorAll('.slot').forEach(slot => {
+                    slot.style.borderRight = `1px solid ${color}`;
+                });
                 document.getElementById('slotInput').value = slots;
                 document.title = title;
             })
