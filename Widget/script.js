@@ -23,7 +23,6 @@ document.title = title;
 // Generate slots for the progress bar
 const initialNumSlots = localStorage.getItem('numSlots1') || 21;
 document.getElementById('slotInput').value = initialNumSlots;
-changeSlots();
 
 // Fetch item details on load
 window.onload = function () {
@@ -53,6 +52,7 @@ window.onload = function () {
                     slot.style.borderRight = `1px solid ${color}`;
                 });
                 document.getElementById('slotInput').value = slots;
+                changeSlots();
                 document.title = title;
             })
             .catch(error => console.error('Error:', error));
