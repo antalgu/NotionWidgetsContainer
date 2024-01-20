@@ -71,7 +71,7 @@ function createItem() {
     const newItem = {
         name: 'Counter',
         count: 0,
-        color: '#00ff00',
+        color: '00ff00',
         numSlots: 21
     };
 
