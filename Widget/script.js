@@ -58,7 +58,7 @@ window.onload = function () {
                         slot.style.borderRight = `1px solid ${color}`;
                     }
                 });
-                document.getElementById('slotInput').value = slots;
+                document.getElementById('slotInput').value = numSlots;
                 changeSlots();
                 document.title = title;
             })
