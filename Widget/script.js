@@ -41,7 +41,7 @@ window.onload = function () {
                 title = data.name;
                 colorb = data.color;
                 color = '#' + colorb;
-                slots = data.slots;
+                numSlots = data.numSlots;
                 document.getElementById('counter').innerText = counter;
                 document.getElementById('titleInput').value = title;
                 document.getElementById('colorPicker').value = color;
@@ -72,7 +72,7 @@ function createItem() {
         name: 'Counter',
         count: 0,
         color: '#00ff00',
-        slots: 21
+        numSlots: 21
     };
 
     return fetch(`${BASE_URL}/items/`, {
