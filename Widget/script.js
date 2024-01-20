@@ -48,8 +48,14 @@ window.onload = function () {
                 document.getElementById('colorPicker').style.backgroundColor = color;
                 document.getElementById('titleInput').style.backgroundColor = color;
                 document.querySelector('.widget-container').style.backgroundColor = color;
-                document.querySelectorAll('.slot').forEach(slot => {
-                    slot.style.borderRight = `1px solid ${color}`;
+                document.querySelectorAll('.slot').forEach((slot, index) => {
+                    if (index < counter) {
+                        slot.style.backgroundColor = 'darkgreen';
+                        slot.style.borderRight = `1px solid ${color}`;
+                    } else {
+                        slot.style.backgroundColor = 'lightgreen';
+                        slot.style.borderRight = `1px solid ${color}`;
+                    }
                 });
                 document.getElementById('slotInput').value = slots;
                 changeSlots();
